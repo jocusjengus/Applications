@@ -1,7 +1,7 @@
 
 /*var subject = prompt("Please enter the required subject"),
  description = prompt("Please enter an appropriate description"),
- enterdate = prompt("Please enter a required date Mon DAY, YEAR"),
+ enterdate = prompt("Please enter a required date Mon no, YEAR"),
  timestamp = prompt("Please enter the required time 00:00");
  */
 
@@ -19,9 +19,9 @@ var appointments = [];
 var Appointment = function () {
  this.subject = subject;
  this.description = description;
- this.date = enterdate;
- this.time = timestamp;
- this.datetime = new Date (enterdate + " " + timestamp);
+ //this.date = enterdate;
+ //this.time = timestamp;
+ this.datetime = new Date (enterdate + " " + timestamp); // returned in console as a.datetime; the datetime method of the created object a in the appoinments array
  this.completed = false;
  };
 
@@ -44,7 +44,7 @@ Appointment.prototype.daysTill= function (){
     return Math.floor(dayval);
 };
 Appointment.prototype.toString = function(){
-    var s = this.subject + '\n' + this.description + '\n' +
+    var s = this.subject + '\n' + this.description + '\n' +  // a.toString(); however a.localString is a build in method
         this.datetime.toString() + '\n';
     if(this.completed){
         s += "Completed\n\n";
@@ -54,8 +54,11 @@ Appointment.prototype.toString = function(){
     return s;
 };
 Appointment.prototype.getDate = function(){
-    return this.datetime.toDateString();
+    return this.datetime.toDateString(); // a.datetime()
 };
+Appointment.prototype.getime = function() {
+    return this.datetime.toLocaleTimeString();
+}
 Appointment.prototype.hoursTo = function (){
     var msPerhr = 1000 * 60 *60;
     var hrs = this.datetime - new Date ();
